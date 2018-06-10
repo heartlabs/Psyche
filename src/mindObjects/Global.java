@@ -7,9 +7,9 @@ import java.util.Map;
  * Created by e1027424 on 07.01.16.
  */
 public class Global {
-    public static final AbstractTemplate whatever = new AbstractTemplate("'Whatever'");
-    public static final MindObject something = new AbstractTemplate(whatever, "'Something'");
-    public static final AbstractTemplate someone = new AbstractTemplate(something, "'Someone'");
+    public static final MindObject whatever = new AbstractTemplate("'Whatever'");
+    public static final MindObject something = new AbstractTemplate("'Something'");
+    public static final MindObject someone = new AbstractTemplate("'Someone'");
 
     private static Feeling desire;
     private static Feeling fear;

@@ -16,15 +16,9 @@ public class Someone extends Something {
     private static double NOTICE_INTENSITY = 0.5d;
 //    private Aura aura = new Aura();
 
-    public Someone(String name, MindObject supertype){
-        this(name);
-        addSupertype(supertype);
-    }
-
     public Someone(String name) {
         super(name);
 
-        addSupertype(Global.someone);
     }
 
     public void addAssociation(MindObject from, MindObject to, Double intensity){

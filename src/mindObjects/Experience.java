@@ -9,17 +9,17 @@ import java.util.Set;
 /**
  * Created by e1027424 on 28.12.15.
  */
-public class Memory extends MindObject {
+public class Experience extends ComposedMindObject {
     private final AssociationGraph content;
     private final Mood connectedEmotions;
     private final int time = 0;
     private double intensity;
 
-    public Memory(MindObject content, double intensity, Mood connectedEmotions){
+    public Experience(MindObject content, double intensity, Mood connectedEmotions){
         this(new AssociationGraph(content), intensity, connectedEmotions);
     }
 
-    public Memory(AssociationGraph content, double intensity, Mood connectedEmotions) {
+    public Experience(AssociationGraph content, double intensity, Mood connectedEmotions) {
         super();
         this.content = content;
         this.intensity = intensity;
@@ -28,11 +28,11 @@ public class Memory extends MindObject {
 
     @Override
     public String express() {
-        return "the memory of: " + content.expressGraph() + " (" + connectedEmotions.express() + ")";
+        return "the eperience of: " + content.expressGraph() + " (" + connectedEmotions.express() + ")";
     }
 
     public void showContentGraph(){
-        content.show("Memory Content");
+        content.show("Experience Content");
     }
 
     @Override
@@ -47,7 +47,6 @@ public class Memory extends MindObject {
         mindset.addVertex(this);
 
         Set<MindObject> contentObjects = getDirectSubComponents();
-//        contentObjects.remove(this);
 
         for (MindObject source: contentObjects){
 
@@ -60,18 +59,7 @@ public class Memory extends MindObject {
                     mindset.addAssociation(o, this, intensity);
             }
 
-//            source.applyToMindset(mindset);
-//            mindset.addAssociation(this, source, 1d);
         }
 
-
-
-   //     complexMemoryGraph.show("Complex Memory");
-
     }
-/*
-    @Override
-    protected double unfoldedEdgesIntensity() {
-        return 2d;
-    }*/
 }

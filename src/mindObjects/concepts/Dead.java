@@ -1,6 +1,5 @@
 package mindObjects.concepts;
 
-import mindObjects.Global;
 import mindObjects.MindObject;
 
 /**
@@ -8,7 +7,7 @@ import mindObjects.MindObject;
  */
 public class Dead extends Concept {
     public Dead(MindObject subject) {
-        super(subject, Global.someone);
+        super(subject);
     }
 
     @Override

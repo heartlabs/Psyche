@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Created by Aaron on 21.12.2015.
  */
-public class Something extends MindObject {
+public class Something extends SimpleMindObject {
 
     private static int lastId = Integer.MIN_VALUE;
 
@@ -18,17 +18,10 @@ public class Something extends MindObject {
 
     private final Set<Concept> publicProperties = new HashSet<>();
 
-    public Something(String name, MindObject supertype){
-        this(name);
-        addSupertype(supertype);
-    }
-
     public Something(String name) {
         super();
 
         this.name = name;
-
-        addSupertype(Global.something);
     }
 
     public String getName() {

@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by Aaron on 21.12.2015.
  */
-public class Feeling extends MindObject {
+public class Feeling extends SimpleMindObject {
     private final String name;
     private final HashMap<Double, String> expressMap;
 

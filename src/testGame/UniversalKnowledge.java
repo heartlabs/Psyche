@@ -20,7 +20,7 @@ public class UniversalKnowledge {
 
     static Something beard = new Something("Beard");
     static Something tree = new Something("Tree");
-    static Something oak = new Something("Oak", tree);
+//    static Something oak = new Something("Oak", tree);
 
 
     static Feeling desire = (Feeling) Global.get("desire");

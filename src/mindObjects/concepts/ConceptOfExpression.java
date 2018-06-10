@@ -2,8 +2,6 @@ package mindObjects.concepts;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import psyche.InvalidSubtypeException;
-import mindObjects.Global;
 import mindObjects.MindObject;
 
 import java.util.Set;
@@ -12,21 +10,19 @@ import java.util.Set;
  * Created by e1027424 on 11.01.16.
  */
 public abstract class ConceptOfExpression extends ConceptWithObject {
-    protected final MindObject target;
+    protected final Referable target;
 
-    protected ConceptOfExpression(MindObject subject, MindObject target, MindObject object) {
-        super(subject, object, Global.someone, Global.whatever);
+    protected ConceptOfExpression(Referable subject, Referable target, Referable object) {
+        super(subject, object);
         this.target = target;
-
-        if (!target.isSubtypeOf(Global.someone))
-            throw new InvalidSubtypeException("Target has invalid type: " + object.express());
     }
 
     @Override
     public Set<MindObject> getDirectSubComponents(){
         Set<MindObject> components= super.getDirectSubComponents();
-        components.add(target);
-
+        
+    	components.add(target.getReference());
+        
         return components;
     }
 
@@ -48,7 +44,8 @@ public abstract class ConceptOfExpression extends ConceptWithObject {
                 .isEquals();
     }
 
-    public int hashCode() {
+    @Override
+	public int hashCode() {
         // you pick a hard-coded, randomly chosen, non-zero, odd number
         // ideally different for each class
         return new HashCodeBuilder(127, 67).

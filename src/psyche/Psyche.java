@@ -26,23 +26,23 @@ public class Psyche {
 
 
 
-    public Memory createMemory (Concept noticed, Double intensity){
+    public Experience createMemory (Concept noticed, Double intensity){
         AssociationGraph memoryGraph = new AssociationGraph();
         memoryGraph.addVertex(noticed);
 
 //        mood.emotionalize(memoryGraph, noticed);
 
-        Memory memory = new Memory(memoryGraph, intensity, mood);
+        Experience memory = new Experience(memoryGraph, intensity, mood);
 
         return memory;
     }
 
-    public void notice (Memory memory){
+    public void notice (Experience memory){
         memory.applyToMindset(associationGraph);
     }
 
     public void notice (Concept noticed, Double intensity){
-        Memory memory = createMemory(noticed, intensity);
+        Experience memory = createMemory(noticed, intensity);
         notice(memory);
     }
 

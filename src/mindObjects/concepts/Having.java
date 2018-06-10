@@ -1,6 +1,5 @@
 package mindObjects.concepts;
 
-import mindObjects.Global;
 import mindObjects.MindObject;
 
 /**
@@ -9,7 +8,7 @@ import mindObjects.MindObject;
 public class Having extends ConceptWithObject {
 
     public Having(MindObject subject, MindObject posessedObject) {
-        super(subject, posessedObject, Global.something, Global.something);
+        super(subject, posessedObject);
     }
 
 

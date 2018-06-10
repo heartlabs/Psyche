@@ -277,31 +277,6 @@ public class AssociationGraph extends BetterWeightedDirectedGraph<MindObject, As
 		return matches;
 	}
 
-	public Set<MindObject> findTypeParent(MindObject toFind){
-		Set<MindObject> matches = new HashSet<>();
-
-		for (MindObject vertex: vertexSet()){
-			if (toFind.isSubtypeOf(vertex) && vertex != toFind)
-				matches.add(vertex);
-		}
-
-		return matches;
-	}
-
-	/*public AssociationGraph clone(){
-		AssociationGraph cloned = new AssociationGraph();
-
-		for (MindObject vertex: vertexSet()){
-			cloned.addVertex(vertex);
-		}
-
-		for (AssociationEdge edge: edgeSet()){
-			cloned.addAssociation(edge.getStimulant(), edge.getTarget(), edge.getIntensity());
-		}
-
-		return  cloned;
-	}*/
-
 	public AssociationGraph intersect(AssociationGraph other){
 		AssociationGraph intersection = new AssociationGraph();
 
@@ -330,21 +305,7 @@ public class AssociationGraph extends BetterWeightedDirectedGraph<MindObject, As
 			unfolded.addAssociation(edge);
 		}
 
-		unfolded.inject(unfolded.subtypeDependencies());
-
 		return unfolded;
-	}
-
-	public AssociationGraph subtypeDependencies(){
-		AssociationGraph dependencies = new AssociationGraph();
-
-		for (MindObject vertex:vertexSet()){
-			for (MindObject supertype: findTypeParent(vertex)){
-				dependencies.addAssociation(vertex, supertype, 1d);
-			}
-		}
-
-		return dependencies;
 	}
 
 	// same edges and vertices

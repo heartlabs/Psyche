@@ -1,6 +1,5 @@
 package mindObjects.concepts;
 
-import mindObjects.Global;
 import mindObjects.MindObject;
 
 /**
@@ -8,7 +7,7 @@ import mindObjects.MindObject;
  */
 public class Loving extends ConceptWithObject {
     public Loving(MindObject subject, MindObject object) {
-        super(subject, object, Global.someone, Global.something);
+        super(subject, object);
     }
 
     @Override

@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
 public class SomeoneTest extends  MindObjectTest {
 
     @Test
-    public void testEquals() throws Exception {
-        super.testEquals(new Someone("a"), new Someone("a"));
-        super.testEquals(new Someone("v"), new Someone("c"));
+    public void testMatches() throws Exception {
+    	assertTrue(a.match(a));
+    	assertFalse(a.match(b));
     }
 
     Someone a = new Someone("A");

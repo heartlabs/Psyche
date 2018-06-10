@@ -1,56 +1,33 @@
 package mindObjects.concepts;
 
+import java.util.Set;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import psyche.InvalidSubtypeException;
-import mindObjects.MindObject;
 
-import java.util.Set;
+import mindObjects.MindObject;
 
 /**
  * Created by e1027424 on 28.12.15.
  */
 public abstract class ConceptWithObject extends Concept {
-    protected final MindObject object;
-    private MindObject objectSupertype;
+    protected final Referable object;
 
-    // use when validObject() is overridden
-    protected ConceptWithObject(MindObject subject, MindObject object){
-        this(subject, object, null, null);
-    }
-
-    protected ConceptWithObject(MindObject subject, MindObject object, MindObject subjectSupertype, MindObject objectSupertype) {
-        super(subject, subjectSupertype);
+    protected ConceptWithObject(Referable subject, Referable object){
+        super(subject);
+        
         this.object = object;
-        this.objectSupertype = objectSupertype;
-
-        if (!validObject(object))
-            throw new InvalidSubtypeException("Object has invalid type: " + object.express());
-    }
-
-    // meant to override
-    protected boolean validObject(MindObject object){
-        return object.isSubtypeOf(objectSupertype);
     }
 
     @Override
     public Set<MindObject> getDirectSubComponents(){
         Set<MindObject> components= super.getDirectSubComponents();
-        components.add(object);
+        
+    	components.add(object.getReference());
+        
         return components;
     }
 
-
-    @Override
-    public boolean isSubtypeOf(MindObject other){
-        if (other instanceof ConceptWithObject) {
-            ConceptWithObject c = (ConceptWithObject) other;
-            if (!object.isSubtypeOf(c.object))
-                return false;
-        }
-
-        return super.isSubtypeOf(other);
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -70,7 +47,8 @@ public abstract class ConceptWithObject extends Concept {
                 .isEquals();
     }
 
-    public int hashCode() {
+    @Override
+	public int hashCode() {
         // you pick a hard-coded, randomly chosen, non-zero, odd number
         // ideally different for each class
         return new HashCodeBuilder(37, 937).
